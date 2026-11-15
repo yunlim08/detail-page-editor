@@ -75,7 +75,7 @@ python3 -m http.server 8000   # 그다음 http://localhost:8000
    - 사진 한 장에 GIF를 올리면 멈춘 그림으로 들어간다 (움직이는 GIF 미지원)
    - 확인한 것(2026-11-15, 앱 내장 브라우저·데스크톱 폭): 11개 블록 화면, 안내 목록 항목 추가·삭제, 버전 1·3 저장본의 수치 강조 블록 옮기기, PNG 내보내기(860 × 4658, 원·체크 표시 포함 정상), 작업 파일 저장. 내려받기는 `<a download>` 호출을 가로채 내용만 확인했고 실제 파일이 폴더에 떨어지는 것은 보지 않았다
 2. 블록이 늘면 `index.html`을 블록별 파일로 나눈다
-3. GitHub 저장소 등록과 GitHub Pages 공개
+3. GitHub Pages 공개. 저장소는 등록함(2026-11-15): https://github.com/yunlim08/detail-page-editor (공개, `main`). 이 PC의 git·gh는 `C:\Program Files\Git\cmd`, `C:\Program Files\GitHub CLI`에 있다
 4. "상품 정보만 교체" 기능 (모달 폼 추천)
 5. 나중에: AI 초안 생성, 회원·결제·내 프로젝트, 유료 블록 과금
 
