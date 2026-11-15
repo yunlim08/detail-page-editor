@@ -101,8 +101,6 @@ svg{display:block}
 .grid{column-count:2;column-gap:10px}
 .card{display:block;position:relative;break-inside:avoid;margin:0 0 10px;border-radius:6px;overflow:hidden;cursor:pointer;background:#fff;box-shadow:0 0 0 1px var(--line)}
 .card:hover,.card:focus-visible{box-shadow:0 0 0 2px var(--accent)}
-.card::after{content:"＋";position:absolute;right:6px;top:6px;width:24px;height:24px;border-radius:6px;display:grid;place-items:center;background:var(--accent);color:#fff;font-size:14px;font-weight:700;opacity:0}
-.card:hover::after,.card:focus-visible::after{opacity:1}
 .tw{display:block;max-height:250px;overflow:hidden}
 .tw .page{pointer-events:none}
 
@@ -175,6 +173,11 @@ svg{display:block}
 .choice:hover{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
 .choice b{font-size:15px;font-weight:700}
 .choice span{font-size:12px;color:var(--muted)}
+.modal.pv{width:min(520px,100%)}
+.pv-box{max-height:min(56vh,560px);overflow-y:auto;scrollbar-gutter:stable;border-radius:8px;background:var(--soft);box-shadow:0 0 0 1px var(--line)}
+.pv-box .page{pointer-events:none}
+.pv-f{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pv-f .btn.primary{margin-left:0}
 .snack{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#191f28;color:#fff;border-radius:8px;padding:10px 14px;font-size:13px;display:none;gap:16px;align-items:center;z-index:30;max-width:calc(100% - 32px);box-shadow:0 6px 24px rgba(0,0,0,.3)}
 .snack.on{display:flex}
 .snack button{border:0;background:none;color:#8db8ff;font-size:13px;font-weight:700;padding:0}
@@ -357,6 +360,13 @@ svg{display:block}
       <button type="button" class="choice" data-export="jpg"><b>JPG</b><span>용량이 작아요</span></button>
     </div>
     <button type="button" class="btn block" id="ex-x">닫기</button>
+  </div>
+</div>
+<div class="scrim" id="pv-scrim">
+  <div class="modal pv" role="dialog" aria-modal="true" aria-labelledby="pv-h">
+    <div class="modal-h"><h2 id="pv-h"></h2><p id="pv-p"></p></div>
+    <div class="pv-box" id="pv-box"></div>
+    <div class="pv-f"><button type="button" class="btn" id="pv-x">닫기</button><button type="button" class="btn primary" id="pv-add">이 블록 추가</button></div>
   </div>
 </div>
 <div class="snack" id="snack" role="status"><span id="snack-t"></span><button type="button" id="snack-a" hidden></button></div>
@@ -750,7 +760,7 @@ function renderLeft(){
       Object.keys(BLOCKS).forEach(function(k){var s=BLOCKS[k];
         if(s.group!==g[0]) return;
         s.variants.forEach(function(v){
-          cards+='<div class="card" role="button" tabindex="0" data-add="'+k+'" data-v="'+v.id+'" aria-label="'+s.name+(s.variants.length>1?' '+v.name:'')+' 추가" title="'+s.name+(s.variants.length>1?' · '+v.name:'')+'"><span class="tw"><div class="page">'+s.render(s.defaults(v.id),v.id,c)+'</div></span></div>';
+          cards+='<div class="card" role="button" tabindex="0" data-add="'+k+'" data-v="'+v.id+'" aria-label="'+s.name+(s.variants.length>1?' '+v.name:'')+' 크게 보기" title="'+s.name+(s.variants.length>1?' · '+v.name:'')+'"><span class="tw"><div class="page">'+s.render(s.defaults(v.id),v.id,c)+'</div></span></div>';
         });
       });
       if(cards) html+='<div class="sec"><h2>'+g[1]+'</h2><div class="grid">'+cards+'</div></div>';
@@ -1003,11 +1013,35 @@ $('rail').addEventListener('click',function(e){
   var t=e.target.closest('[data-left]'); if(!t) return;
   leftTab=t.getAttribute('data-left');renderLeft();
 });
+/* 썸네일을 누르면 바로 넣지 않고 크게 보여 준 뒤, "이 블록 추가"를 눌러야 들어간다 */
+var pv=null;
+function openPreview(type,variant){
+  var s=BLOCKS[type], vn=vname(s,variant), box=$('pv-box');
+  pv={type:type,variant:variant};
+  $('pv-h').textContent=s.name+(vn?' · '+vn:'');
+  $('pv-p').textContent=sel()?'선택한 블록 바로 아래에 들어가요.':'페이지 맨 아래에 들어가요.';
+  box.innerHTML='<div class="page">'+s.render(s.defaults(variant),variant,ctx())+'</div>';
+  $('pv-scrim').classList.add('on');
+  var p=box.firstChild;applyTheme(p);p.style.zoom=(box.clientWidth/860).toFixed(4);fit(p);box.scrollTop=0;
+  $('pv-add').focus();
+}
+function closePreview(){
+  if(!pv) return;
+  var c=$('left-body').querySelector('.card[data-add="'+pv.type+'"][data-v="'+pv.variant+'"]');
+  pv=null;$('pv-scrim').classList.remove('on');$('pv-box').innerHTML='';
+  if(c) c.focus({preventScroll:true});
+}
+$('pv-x').addEventListener('click',closePreview);
+$('pv-scrim').addEventListener('click',function(e){if(e.target===$('pv-scrim')) closePreview();});
+$('pv-add').addEventListener('click',function(){
+  if(!pv) return;
+  var p=pv;closePreview();addBlock(p.type,p.variant);
+});
 $('left-body').addEventListener('keydown',function(e){
-  var c=e.target.closest('.card'); if(c&&(e.key==='Enter'||e.key===' ')){e.preventDefault();addBlock(c.getAttribute('data-add'),c.getAttribute('data-v'));}
+  var c=e.target.closest('.card'); if(c&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openPreview(c.getAttribute('data-add'),c.getAttribute('data-v'));}
 });
 $('left-body').addEventListener('click',function(e){
-  var c=e.target.closest('.card'); if(c){addBlock(c.getAttribute('data-add'),c.getAttribute('data-v'));return;}
+  var c=e.target.closest('.card'); if(c){openPreview(c.getAttribute('data-add'),c.getAttribute('data-v'));return;}
   var btn=e.target.closest('[data-act="pick"]'); if(!btn) return;
   selId=btn.closest('.row').getAttribute('data-id');tab='block';renderAll();
   var n=$('page').querySelector('.blk.sel'); if(n){n.scrollIntoView({block:'nearest'});placeTools();}
@@ -1107,6 +1141,7 @@ $('file-open').addEventListener('change',function(e){
   fr.readAsText(f);e.target.value='';
 });
 document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'&&pv){closePreview();return;}
   if(e.key==='Escape'&&exportOpen){closeExport();return;}
   if(!(e.ctrlKey||e.metaKey)) return;
   var k=e.key.toLowerCase();
