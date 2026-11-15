@@ -212,7 +212,7 @@ svg{display:block}
 #page .blk.sel::after{content:"";position:absolute;inset:0;border:6px solid #2f7bf6;pointer-events:none}
 #page .blk{cursor:pointer}
 #page .blk:not(.sel):hover::after{content:"";position:absolute;inset:0;border:6px solid rgba(47,123,246,.35);pointer-events:none}
-#page [data-edit],#page .ph{border-radius:8px}
+#page [data-edit]{border-radius:8px}
 #page [data-edit]:hover,#page .ph:hover{box-shadow:0 0 0 5px rgba(47,123,246,.5)}
 .ph{background-color:#e4e8ee;background-size:cover;background-position:center}
 .ph.none{display:grid;place-items:center;text-align:center;color:#8b95a1;font-size:30px;font-weight:600;line-height:1.5;outline:3px dashed rgba(0,0,0,.14);outline-offset:-28px}
@@ -229,25 +229,56 @@ svg{display:block}
 .b-hook.v-light .eyebrow{color:var(--p-accent);font-weight:700}
 .b-hook.v-light .ph{width:760px;height:700px;border-radius:36px;margin-top:80px}
 
-.b-num{background:var(--p-bg);text-align:center;padding:200px 0 150px;display:flex;flex-direction:column;align-items:center}
 .plabel{position:relative;font-family:var(--p-latin);font-weight:700;font-size:54px;line-height:1;color:var(--p-accent);padding:0 16px 20px}
 .plabel::after{content:"";position:absolute;left:0;right:0;bottom:0;height:16px;border-top:4px solid var(--p-accent);border-radius:50%;pointer-events:none}
-.b-num .hl{margin-top:40px;max-width:720px;font-size:46px;font-weight:300;line-height:1.38}
-.b-num .hl2{max-width:720px;font-size:46px;font-weight:700;line-height:1.38}
-.b-num .ph{margin-top:60px;width:860px;height:700px}
-.b-num .hand{margin-top:150px;font-family:var(--p-hand);font-size:96px;line-height:1.15}
-.ratio{margin-top:64px;display:flex;justify-content:center;align-items:flex-start;gap:60px}
-.ratio .n{font-size:196px;font-weight:900;line-height:1;color:var(--p-accent)}
-.ratio .l{margin-top:16px;font-size:31px;font-weight:700;line-height:1.2}
-.ratio .colon{font-size:150px;font-weight:900;line-height:1.1;color:var(--p-accent)}
-.bars{width:660px;margin-top:80px;display:grid;gap:34px;text-align:left}
-.bar-t{display:flex;justify-content:space-between;align-items:baseline;font-size:31px;font-weight:700;margin-bottom:12px}
-.bar-t em{font-style:normal;font-size:44px;font-weight:900;color:var(--p-accent)}
-.bar-k{height:56px;border-radius:28px;background:#fff;overflow:hidden}
-.bar-f{height:56px;border-radius:28px;background:var(--p-accent)}
-.bar.b .bar-f{background:var(--p-mute)}
-.bar.b .bar-t em{color:var(--p-ink)}
-.b-num .desc{margin-top:70px;width:680px;font-size:32px;font-weight:300;line-height:1.55}
+.b-point{background:var(--p-bg);text-align:center;padding:200px 0 60px;display:flex;flex-direction:column;align-items:center}
+.b-point .hl{margin-top:40px;max-width:720px;font-size:46px;font-weight:300;line-height:1.38}
+.b-point .hl2{max-width:720px;font-size:46px;font-weight:700;line-height:1.38}
+
+.b-photo .ph{width:860px;height:700px}
+.b-photo.v-tall .ph{height:1075px}
+
+.b-emph{background:var(--p-bg);text-align:center;padding:150px 0;display:flex;flex-direction:column;align-items:center}
+.b-emph .hand{font-family:var(--p-hand);font-size:96px;line-height:1.15}
+.b-emph .big{margin-top:48px;width:760px;white-space:nowrap;font-size:196px;font-weight:900;line-height:1.1;color:var(--p-accent)}
+.b-emph .desc{margin-top:56px;width:680px;font-size:32px;font-weight:300;line-height:1.55}
+
+.b-text{background:#fff;text-align:center;padding:140px 0;display:flex;flex-direction:column;align-items:center}
+.b-text .t{max-width:720px;font-size:52px;font-weight:700;line-height:1.35}
+.b-text .d{margin-top:36px;max-width:680px;font-size:30px;font-weight:300;line-height:1.6}
+
+.b-marks{background:var(--p-dark);color:var(--p-on-dark);text-align:center;padding:120px 0}
+.b-marks .ms{display:flex;justify-content:center;gap:36px}
+.b-marks .m{width:210px;height:210px;border-radius:50%;border:4px solid var(--p-accent);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;line-height:1.3}
+.b-marks .line{margin:64px auto 0;max-width:720px;font-size:34px;font-weight:500;line-height:1.45}
+
+.b-circle{background:#fff;text-align:center;padding:140px 0;display:flex;flex-direction:column;align-items:center}
+.b-circle .ph{width:420px;height:420px;border-radius:50%}
+.b-circle .t{margin-top:56px;max-width:720px;font-size:46px;font-weight:700;line-height:1.35}
+.b-circle ul{list-style:none;margin:40px 0 0;padding:0;width:640px;text-align:left}
+.b-circle li{display:grid;grid-template-columns:44px 1fr;gap:20px;align-items:start;padding:28px 0;border-top:2px solid var(--p-bg);font-size:30px;line-height:1.45}
+.b-circle li:first-child{border-top:0}
+.b-circle li i{position:relative;width:44px;height:44px;border-radius:50%;background:var(--p-accent)}
+.b-circle li i::after{content:"";position:absolute;left:16px;top:9px;width:9px;height:18px;border:solid #fff;border-width:0 4px 4px 0;transform:rotate(45deg)}
+
+.b-cards{background:var(--p-bg);padding:100px 40px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.b-cards .c{background:#fff;border-radius:36px;padding:20px 20px 44px;text-align:center}
+.b-cards .ph{width:340px;height:340px;border-radius:24px}
+.b-cards .ph.none{font-size:26px;outline-offset:-20px}
+.b-cards .cap{margin-top:32px;font-size:30px;font-weight:700;line-height:1.4}
+
+.b-guide{background:#fff;padding:120px 60px}
+.b-guide .gt{font-size:40px;font-weight:700;line-height:1.3;padding-bottom:32px;border-bottom:4px solid var(--p-ink)}
+.b-guide .gi{display:grid;grid-template-columns:190px 1fr;gap:24px;padding:32px 0;border-bottom:2px solid var(--p-bg);font-size:26px;line-height:1.6}
+.b-guide .gi .k{font-weight:700}
+.b-guide .gi .v{color:#4e5661}
+
+.b-contact{background:var(--p-bg);padding:100px 30px}
+.b-contact .cc{background:var(--p-dark);color:var(--p-on-dark);border-radius:36px;padding:90px 40px;text-align:center}
+.b-contact .ct{font-size:30px;font-weight:700;color:var(--p-accent)}
+.b-contact .tel{margin:20px auto 0;width:700px;white-space:nowrap;font-size:92px;font-weight:900;line-height:1.15}
+.b-contact .hrs{margin-top:32px;font-size:26px;font-weight:300;line-height:1.6;color:var(--p-mute)}
+.b-contact .ex{display:inline-block;margin-top:40px;padding:16px 36px;border-radius:40px;background:rgba(255,255,255,.12);font-size:26px;font-weight:500}
 
 .b-faq{background:var(--p-bg);padding:100px 30px}
 .b-faq .panel{background:#fff;border-radius:36px;padding:100px 25px 40px}
@@ -391,7 +422,7 @@ function photo(id,hint,key){
 var GROUPS=[['intro','첫 화면'],['point','포인트'],['info','안내']];
 var BLOCKS = {
   hook:{
-    name:'후킹', role:'첫 화면', group:'intro',
+    name:'타이틀', group:'intro',
     variants:[{id:'dark',name:'어두운 배경'},{id:'light',name:'밝은 배경'}],
     fields:[
       {key:'text01',type:'text',max:16},
@@ -410,45 +441,118 @@ var BLOCKS = {
         (v==='dark'?'':ph)+'</div>';
     }
   },
-  number:{
-    name:'수치 강조', role:'포인트 · 비교', group:'point',
-    variants:[{id:'ratio',name:'숫자 대비'},{id:'bar',name:'막대 비교'}],
+  point:{
+    name:'포인트 제목', group:'point',
+    variants:[{id:'a',name:'기본'}],
     fields:[
       {key:'text01',type:'text',max:10},
       {key:'text02',type:'text',max:14},
-      {key:'text03',type:'text',max:14},
-      {key:'image01',type:'image',hint:'가로 860px 이상'},
-      {key:'text04',type:'area',max:18,em:'accent'},
-      {key:'text05',type:'text',max:4},
-      {key:'text06',type:'text',max:8},
-      {key:'text07',type:'text',max:4},
-      {key:'text08',type:'text',max:8},
-      {key:'text09',type:'area',max:40,em:'bold'}
+      {key:'text03',type:'text',max:14}
     ],
-    defaults:function(){return {text01:'Point 02',text02:'지방과 살코기의',text03:'완벽한 황금비율!',image01:'sample:pork',text04:'비율의 차이가\n맛의 차이!',text05:'6',text06:'살코기',text07:'4',text08:'지방',text09:'전문가가 선호하는 6:4의 비율에 가장\n가까운 삼겹살만 엄선했습니다!',em:{text04:'비율, 맛',text09:'6:4의 비율에 가장 가까운 삼겹살'}};},
+    defaults:function(){return {text01:'Point 02',text02:'지방과 살코기의',text03:'완벽한 황금비율!'};},
     summary:function(d){return d.text02+' '+d.text03;},
-    render:function(d,v){
-      var a=num(d.text05), b=num(d.text07), m=Math.max(a,b)||1, g;
-      if(v==='bar'){
-        g='<div class="bars">'+
-          '<div class="bar a"><div class="bar-t"><span'+ed('text06')+'>'+mk(d.text06)+'</span><em'+ed('text05')+'>'+mk(d.text05)+'</em></div><div class="bar-k"><div class="bar-f" style="width:'+Math.max(6,a/m*100).toFixed(1)+'%"></div></div></div>'+
-          '<div class="bar b"><div class="bar-t"><span'+ed('text08')+'>'+mk(d.text08)+'</span><em'+ed('text07')+'>'+mk(d.text07)+'</em></div><div class="bar-k"><div class="bar-f" style="width:'+Math.max(6,b/m*100).toFixed(1)+'%"></div></div></div></div>';
-      }else{
-        g='<div class="ratio"><div><div class="n"'+ed('text05')+'>'+mk(d.text05)+'</div><div class="l"'+ed('text06')+'>'+mk(d.text06)+'</div></div>'+
-          '<div class="colon">:</div>'+
-          '<div><div class="n"'+ed('text07')+'>'+mk(d.text07)+'</div><div class="l"'+ed('text08')+'>'+mk(d.text08)+'</div></div></div>';
-      }
-      return '<div class="b-num v-'+v+'">'+
-        '<div class="plabel"'+ed('text01')+'>'+mk(d.text01)+'</div>'+
+    render:function(d){
+      return '<div class="b-point"><div class="plabel"'+ed('text01')+'>'+mk(d.text01)+'</div>'+
         '<div class="hl"'+ed('text02')+'>'+mk(d.text02)+'</div>'+
-        '<div class="hl2"'+ed('text03')+'>'+mk(d.text03)+'</div>'+
-        photo(d.image01,'860 × 700','image01')+
-        '<div class="hand"'+ed('text04')+'>'+emk(d.text04,d.em&&d.em.text04,'accent')+'</div>'+g+
-        '<div class="desc"'+ed('text09')+'>'+emk(d.text09,d.em&&d.em.text09,'bold')+'</div></div>';
+        '<div class="hl2"'+ed('text03')+'>'+mk(d.text03)+'</div></div>';
+    }
+  },
+  photo:{
+    name:'사진 한 장', group:'point',
+    variants:[{id:'wide',name:'가로로 긴 사진'},{id:'tall',name:'세로로 긴 사진'}],
+    fields:[
+      {key:'image01',type:'image',hint:'가로 860px 이상. GIF는 멈춘 그림으로 들어가요'}
+    ],
+    defaults:function(v){return {image01:v==='tall'?'sample:hero':'sample:pork'};},
+    summary:function(d){return d.image01?'사진 있음':'사진 없음';},
+    render:function(d,v){
+      return '<div class="b-photo v-'+v+'">'+photo(d.image01,v==='tall'?'860 × 1075':'860 × 700','image01')+'</div>';
+    }
+  },
+  emph:{
+    name:'강조 문구', group:'point',
+    variants:[{id:'a',name:'기본'}],
+    fields:[
+      {key:'text01',type:'area',max:18,em:'accent'},
+      {key:'text02',type:'text',max:7,fit:true},
+      {key:'text03',type:'area',max:40,em:'bold'}
+    ],
+    defaults:function(){return {text01:'비율의 차이가\n맛의 차이!',text02:'6 : 4',text03:'전문가가 선호하는 6:4의 비율에 가장\n가까운 삼겹살만 엄선했습니다!',em:{text01:'비율, 맛',text03:'6:4의 비율에 가장 가까운 삼겹살'}};},
+    summary:function(d){return d.text01;},
+    render:function(d){
+      return '<div class="b-emph"><div class="hand"'+ed('text01')+'>'+emk(d.text01,d.em&&d.em.text01,'accent')+'</div>'+
+        '<div class="big" data-fit="196"'+ed('text02')+'>'+mk(d.text02)+'</div>'+
+        '<div class="desc"'+ed('text03')+'>'+emk(d.text03,d.em&&d.em.text03,'bold')+'</div></div>';
+    }
+  },
+  text:{
+    name:'문구만', group:'point',
+    variants:[{id:'a',name:'기본'}],
+    fields:[
+      {key:'text01',type:'area',max:26,em:'accent'},
+      {key:'text02',type:'area',max:50,em:'bold'}
+    ],
+    defaults:function(){return {text01:'매일 아침,\n가장 신선한 고기만 담습니다',text02:'주문이 들어온 당일에 손질해\n산지의 신선함 그대로 보내드립니다.',em:{text01:'가장 신선한 고기',text02:'당일에 손질'}};},
+    summary:function(d){return d.text01;},
+    render:function(d){
+      return '<div class="b-text"><div class="t"'+ed('text01')+'>'+emk(d.text01,d.em&&d.em.text01,'accent')+'</div>'+
+        '<div class="d"'+ed('text02')+'>'+emk(d.text02,d.em&&d.em.text02,'bold')+'</div></div>';
+    }
+  },
+  marks:{
+    name:'마크 3개와 한 줄 문구', group:'point',
+    variants:[{id:'a',name:'기본'}],
+    fields:[
+      {key:'text01',type:'area',max:8},
+      {key:'text02',type:'area',max:8},
+      {key:'text03',type:'area',max:8},
+      {key:'text04',type:'text',max:24}
+    ],
+    defaults:function(){return {text01:'무항생제\n인증',text02:'당일\n도축',text03:'HACCP\n인증',text04:'깐깐한 기준을 통과한 고기만 보내드립니다'};},
+    summary:function(d){return d.text04;},
+    render:function(d){
+      var m=function(k){return '<div class="m"><span'+ed(k)+'>'+mk(d[k])+'</span></div>';};
+      return '<div class="b-marks"><div class="ms">'+m('text01')+m('text02')+m('text03')+'</div>'+
+        '<div class="line"'+ed('text04')+'>'+mk(d.text04)+'</div></div>';
+    }
+  },
+  circle:{
+    name:'원형 사진과 글 목록', group:'point',
+    variants:[{id:'a',name:'기본'}],
+    fields:[
+      {key:'image01',type:'image',hint:'정사각형 사진, 420px 이상'},
+      {key:'text01',type:'text',max:14},
+      {key:'text02',type:'text',max:22},
+      {key:'text03',type:'text',max:22},
+      {key:'text04',type:'text',max:22}
+    ],
+    defaults:function(){return {image01:'sample:hero-crop',text01:'이런 분께 추천해요',text02:'아이에게 안심하고 먹일 고기를 찾는 분',text03:'잡내 없이 고소한 삼겹살을 원하는 분',text04:'캠핑이나 집들이에 쓸 고기가 필요한 분'};},
+    summary:function(d){return d.text01;},
+    render:function(d){
+      var li=function(k){return d[k]?'<li><i></i><span'+ed(k)+'>'+mk(d[k])+'</span></li>':'';};
+      return '<div class="b-circle">'+photo(d.image01,'420 × 420','image01')+
+        '<div class="t"'+ed('text01')+'>'+mk(d.text01)+'</div>'+
+        '<ul>'+li('text02')+li('text03')+li('text04')+'</ul></div>';
+    }
+  },
+  cards:{
+    name:'2열 카드', group:'point',
+    variants:[{id:'a',name:'기본'}],
+    fields:[
+      {key:'image01',type:'image',hint:'정사각형 사진, 340px 이상'},
+      {key:'text01',type:'area',max:12},
+      {key:'image02',type:'image',hint:'정사각형 사진, 340px 이상'},
+      {key:'text02',type:'area',max:12}
+    ],
+    defaults:function(){return {image01:'sample:pork',text01:'구이용은 두툼하게',image02:'sample:hero-crop',text02:'수육용은 통으로'};},
+    summary:function(d){return d.text01+' / '+d.text02;},
+    render:function(d){
+      var c=function(img,txt){return '<div class="c">'+photo(d[img],'340 × 340',img)+'<div class="cap"'+ed(txt)+'>'+mk(d[txt])+'</div></div>';};
+      return '<div class="b-cards">'+c('image01','text01')+c('image02','text02')+'</div>';
     }
   },
   faq:{
-    name:'FAQ', role:'자주 묻는 질문', group:'info',
+    name:'질문과 답변', group:'info',
     variants:[{id:'card',name:'카드형'},{id:'line',name:'구분선형'}],
     fields:[
       {key:'text01',type:'text',max:8},
@@ -467,17 +571,61 @@ var BLOCKS = {
       }).join('');
       return '<div class="b-faq v-'+v+'"><div class="panel"><div class="ft"><div class="t"'+ed('text01')+'>'+mk(d.text01)+'</div><div class="s"'+ed('text02')+'>'+mk(d.text02)+'</div></div>'+qs+'</div></div>';
     }
+  },
+  guide:{
+    name:'안내 목록', group:'info',
+    variants:[{id:'a',name:'기본'}],
+    fields:[
+      {key:'text01',type:'text',max:14},
+      {key:'items',type:'qa',maxA:60,label:'항목들',q:'항목',a:'내용'}
+    ],
+    defaults:function(){return {text01:'배송 · 보관 안내',items:[
+      {q:'배송 기간',a:'평일 오후 2시 이전에 결제하시면 당일 출고되어 다음 날 받아보실 수 있습니다.'},
+      {q:'포장 방법',a:'아이스박스와 아이스팩으로 신선하게 포장해 보내드립니다.'},
+      {q:'보관 방법',a:'받으신 즉시 냉장 보관하고, 3일 이내에 드시는 것을 권장합니다.'},
+      {q:'교환 · 반품',a:'신선식품 특성상 단순 변심에 의한 교환과 반품은 어렵습니다.'}
+    ]};},
+    summary:function(d){return d.text01;},
+    render:function(d){
+      var rows=(d.items||[]).map(function(it,i){
+        return '<div class="gi"><div class="k"><span'+ed('items.'+i+'.q')+'>'+mk(it.q)+'</span></div><div class="v"><span'+ed('items.'+i+'.a')+'>'+mk(it.a)+'</span></div></div>';
+      }).join('');
+      return '<div class="b-guide"><div class="gt"><span'+ed('text01')+'>'+mk(d.text01)+'</span></div>'+rows+'</div>';
+    }
+  },
+  contact:{
+    name:'연락처 카드', group:'info',
+    variants:[{id:'a',name:'기본'}],
+    fields:[
+      {key:'text01',type:'text',max:10},
+      {key:'text02',type:'text',max:13,fit:true},
+      {key:'text03',type:'area',max:44},
+      {key:'text04',type:'text',max:20}
+    ],
+    defaults:function(){return {text01:'고객센터',text02:'1588-0000',text03:'평일 09:00 ~ 18:00\n점심 12:00 ~ 13:00 · 주말과 공휴일 휴무',text04:'카카오톡 채널 @브랜드명'};},
+    summary:function(d){return d.text02;},
+    render:function(d){
+      return '<div class="b-contact"><div class="cc"><div class="ct"><span'+ed('text01')+'>'+mk(d.text01)+'</span></div>'+
+        '<div class="tel" data-fit="92"'+ed('text02')+'>'+mk(d.text02)+'</div>'+
+        '<div class="hrs"'+ed('text03')+'>'+mk(d.text03)+'</div>'+
+        (d.text04?'<div class="ex"><span'+ed('text04')+'>'+mk(d.text04)+'</span></div>':'')+'</div></div>';
+    }
   }
 };
+function vname(s,vid){
+  if(s.variants.length<2) return '';
+  var v=s.variants.filter(function(x){return x.id===vid;})[0];return v?v.name:'';
+}
+function qaField(s){return s.fields.filter(function(x){return x.type==='qa';})[0]||{};}
 /* 칸 이름은 사람이 붙이지 않는다: 화면 위에서 아래 순서로 "글자 1, 글자 2, 사진 1" */
 function fieldLabel(s,f){
-  if(f.type==='qa') return '질문과 답변';
+  if(f.type==='qa') return f.label||'질문과 답변';
   var img=f.type==='image', n=0;
   for(var i=0;i<s.fields.length;i++){var x=s.fields[i]; if(x.type!=='qa'&&(x.type==='image')===img){n++; if(x===f) break;}}
   return (img?'사진 ':'글자 ')+n;
 }
 function tagLabel(s,path){
-  var m=/^items\.(\d+)\.(q|a)$/.exec(path); if(m) return (m[2]==='q'?'Q':'A')+(+m[1]+1);
+  var m=/^items\.(\d+)\.(q|a)$/.exec(path); if(m){var qf=qaField(s);return (m[2]==='q'?(qf.q||'Q'):(qf.a||'A'))+(qf.q?' ':'')+(+m[1]+1);}
   var f=s.fields.filter(function(x){return x.key===path;})[0]; return f?fieldLabel(s,f):'';
 }
 /* 예전 저장본(뜻으로 붙인 이름)을 번호 이름으로 옮기는 표 */
@@ -490,17 +638,35 @@ var KEYMAP={
 /* ───────── 문서 상태 ───────── */
 function uid(){return 'b'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
 function makeBlock(type,variant){var s=BLOCKS[type];return {id:uid(),type:type,variant:variant||s.variants[0].id,data:s.defaults(variant||s.variants[0].id)};}
-function sampleDoc(){return {version:3,theme:'green',display:'brush',assets:{},blocks:[makeBlock('hook','dark'),makeBlock('number','ratio'),makeBlock('faq','card')]};}
+function sampleDoc(){return {version:4,theme:'green',display:'brush',assets:{},blocks:[makeBlock('hook','dark'),makeBlock('point'),makeBlock('photo','wide'),makeBlock('emph'),makeBlock('faq','card')]};}
+function rekey(b,km){
+  Object.keys(km).forEach(function(k){
+    if(b.data[k]!==undefined){if(b.data[km[k]]===undefined) b.data[km[k]]=b.data[k];delete b.data[k];}
+    if(b.data.em&&b.data.em[k]!==undefined){if(b.data.em[km[k]]===undefined) b.data.em[km[k]]=b.data.em[k];delete b.data.em[k];}
+  });
+}
+/* 버전 3까지의 "수치 강조" 블록은 생김새 묶음 세 개(포인트 제목 · 사진 한 장 · 강조 문구)로 나눈다 */
+function splitNumber(b){
+  rekey(b,KEYMAP.number);
+  var d=b.data, e=d.em||{}, big=[d.text05,d.text07].filter(function(x){return x!=null&&String(x)!=='';}).join(' : ');
+  var em={}; if(e.text04) em.text01=e.text04; if(e.text09) em.text03=e.text09;
+  return [
+    {id:b.id,type:'point',variant:'a',data:{text01:d.text01,text02:d.text02,text03:d.text03}},
+    {id:uid(),type:'photo',variant:'wide',data:{image01:d.image01}},
+    {id:uid(),type:'emph',variant:'a',data:{text01:d.text04,text02:big||undefined,text03:d.text09,em:em}}
+  ];
+}
 function validDoc(d){
-  if(!d||[1,2,3].indexOf(d.version)<0||!Array.isArray(d.blocks)) return null;
-  var old=d.version===1;d.version=3;
+  if(!d||[1,2,3,4].indexOf(d.version)<0||!Array.isArray(d.blocks)) return null;
+  var old=d.version===1;d.version=4;
+  d.blocks=d.blocks.reduce(function(out,b){
+    if(b&&b.type==='number'&&b.data) return out.concat(splitNumber(b));
+    out.push(b);return out;
+  },[]);
   d.blocks=d.blocks.filter(function(b){return b&&BLOCKS[b.type]&&b.data;});
   d.blocks.forEach(function(b){
-    var s=BLOCKS[b.type], km=KEYMAP[b.type]||{};
-    Object.keys(km).forEach(function(k){
-      if(b.data[k]!==undefined){if(b.data[km[k]]===undefined) b.data[km[k]]=b.data[k];delete b.data[k];}
-      if(b.data.em&&b.data.em[k]!==undefined){if(b.data.em[km[k]]===undefined) b.data.em[km[k]]=b.data.em[k];delete b.data.em[k];}
-    });
+    var s=BLOCKS[b.type];
+    rekey(b,KEYMAP[b.type]||{});
     if(!s.variants.some(function(v){return v.id===b.variant;})) b.variant=s.variants[0].id;
     var def=s.defaults(b.variant);
     if(old) s.fields.forEach(function(f){if(f.type==='image'&&!b.data[f.key]) b.data[f.key]=def[f.key];});
@@ -584,7 +750,7 @@ function renderLeft(){
       Object.keys(BLOCKS).forEach(function(k){var s=BLOCKS[k];
         if(s.group!==g[0]) return;
         s.variants.forEach(function(v){
-          cards+='<div class="card" role="button" tabindex="0" data-add="'+k+'" data-v="'+v.id+'" aria-label="'+s.name+' '+v.name+' 추가" title="'+s.name+' · '+v.name+'"><span class="tw"><div class="page">'+s.render(s.defaults(v.id),v.id,c)+'</div></span></div>';
+          cards+='<div class="card" role="button" tabindex="0" data-add="'+k+'" data-v="'+v.id+'" aria-label="'+s.name+(s.variants.length>1?' '+v.name:'')+' 추가" title="'+s.name+(s.variants.length>1?' · '+v.name:'')+'"><span class="tw"><div class="page">'+s.render(s.defaults(v.id),v.id,c)+'</div></span></div>';
         });
       });
       if(cards) html+='<div class="sec"><h2>'+g[1]+'</h2><div class="grid">'+cards+'</div></div>';
@@ -599,10 +765,10 @@ function renderLeft(){
   }
   if(!doc.blocks.length){el.innerHTML='<div class="empty-note">아직 블록이 없어요.<br>블록 메뉴에서 마음에 드는 블록을 눌러 주세요.</div>';return;}
   el.innerHTML='<div class="sec"><div class="sec-h"><h2>내 페이지</h2><span>끌어서 순서 바꾸기</span></div><ol class="rows" id="rows">'+doc.blocks.map(function(b){
-    var s=BLOCKS[b.type], v=s.variants.filter(function(x){return x.id===b.variant;})[0];
+    var s=BLOCKS[b.type], vn=vname(s,b.variant);
     return '<li class="row'+(b.id===selId?' sel':'')+'" data-id="'+b.id+'">'+
       '<span class="handle" data-drag="1" title="끌어서 순서 바꾸기" aria-hidden="true">'+ic('grip')+'</span>'+
-      '<button type="button" class="row-main" data-act="pick"><span class="row-t">'+s.name+' · '+v.name+'</span><span class="row-s">'+esc(plain(s.summary(b.data)))+'</span></button></li>';
+      '<button type="button" class="row-main" data-act="pick"><span class="row-t">'+s.name+(vn?' · '+vn:'')+'</span><span class="row-s">'+esc(plain(s.summary(b.data)))+'</span></button></li>';
   }).join('')+'</ol></div>';
 }
 /* 선택한 블록 옆 도구 위치: 블록 왼쪽 바깥, 스크롤해도 블록 안에서 따라옴 */
@@ -654,12 +820,13 @@ function fieldHTML(b,f,half){
       '<span class="help">'+f.hint+'</span><input type="file" id="'+id+'" data-img="'+f.key+'" accept="image/*" hidden></div>';
   }
   if(f.type==='qa'){
+    var qn=f.q||'질문', an=f.a||'답변';
     return '<div class="fld"><span class="lbl">'+fieldLabel(BLOCKS[b.type],f)+'</span>'+(v||[]).map(function(it,i){
-      return '<div class="qa-ed" id="w-qa-'+i+'"><div class="qa-ed-h"><span>Q'+(i+1)+'</span><button type="button" class="iconx" data-qadel="'+i+'" aria-label="질문 '+(i+1)+' 삭제" title="삭제">'+ic('x')+'</button></div>'+
-        '<input type="text" id="f-q-'+i+'" aria-label="질문 '+(i+1)+'" data-qa="'+i+'" data-part="q" value="'+esc(it.q)+'" placeholder="질문">'+
-        '<textarea id="f-a-'+i+'" aria-label="답변 '+(i+1)+'" data-qa="'+i+'" data-part="a" rows="3" placeholder="답변">'+esc(it.a)+'</textarea>'+
-        '<div class="help over" id="h-qa-'+i+'"'+(plainLen(it.a)>f.maxA?'':' hidden')+'>답변이 길어서 카드가 늘어나요.</div></div>';
-    }).join('')+'<button type="button" class="addrow" data-qaadd="1">'+ic('plus')+'질문 추가</button></div>';
+      return '<div class="qa-ed" id="w-qa-'+i+'"><div class="qa-ed-h"><span>'+(f.q?f.q+' ':'Q')+(i+1)+'</span><button type="button" class="iconx" data-qadel="'+i+'" aria-label="'+qn+' '+(i+1)+' 삭제" title="삭제">'+ic('x')+'</button></div>'+
+        '<input type="text" id="f-q-'+i+'" aria-label="'+qn+' '+(i+1)+'" data-qa="'+i+'" data-part="q" value="'+esc(it.q)+'" placeholder="'+qn+'">'+
+        '<textarea id="f-a-'+i+'" aria-label="'+an+' '+(i+1)+'" data-qa="'+i+'" data-part="a" rows="3" placeholder="'+an+'">'+esc(it.a)+'</textarea>'+
+        '<div class="help over" id="h-qa-'+i+'"'+(plainLen(it.a)>f.maxA?'':' hidden')+'>'+an+'이 길어서 칸이 늘어나요.</div></div>';
+    }).join('')+'<button type="button" class="addrow" data-qaadd="1">'+ic('plus')+qn+' 추가</button></div>';
   }
   return '';
 }
@@ -672,7 +839,7 @@ function renderInsp(){
     var a=fs[i], n=fs[i+1];
     if(a.type==='text'&&a.max<=10&&n&&n.type==='text'&&n.max<=10){half[i]=half[i+1]=true;i++;}
   }
-  el.innerHTML='<div class="insp-h"><h2>'+s.name+'</h2><span>'+s.variants.filter(function(v){return v.id===b.variant;})[0].name+'</span></div><div class="pad">'+
+  el.innerHTML='<div class="insp-h"><h2>'+s.name+'</h2><span>'+vname(s,b.variant)+'</span></div><div class="pad">'+
     fs.map(function(f,k){return fieldHTML(b,f,half[k]);}).join('')+'</div>';
 }
 function renderAll(){renderPage();renderLeft();renderInsp();}
@@ -705,7 +872,7 @@ function serializeDoc(){
   var used={};
   doc.blocks.forEach(function(b){BLOCKS[b.type].fields.forEach(function(f){if(f.type==='image'&&b.data[f.key]) used[b.data[f.key]]=1;});});
   var assets={};Object.keys(doc.assets).forEach(function(k){if(used[k]) assets[k]=doc.assets[k];});
-  return JSON.stringify({version:3,theme:doc.theme,display:doc.display,assets:assets,blocks:doc.blocks});
+  return JSON.stringify({version:4,theme:doc.theme,display:doc.display,assets:assets,blocks:doc.blocks});
 }
 function db(){
   if(!dbp) dbp=new Promise(function(res,rej){
@@ -909,7 +1076,7 @@ $('insp-body').addEventListener('click',function(e){
   if(!b) return;
   if(t.hasAttribute('data-imgdel')){b.data[t.getAttribute('data-imgdel')]='';renderAll();touch();}
   else if(t.hasAttribute('data-qadel')){b.data.items.splice(+t.getAttribute('data-qadel'),1);renderAll();touch();}
-  else if(t.hasAttribute('data-qaadd')){b.data.items.push({q:'질문을 적어 주세요',a:'답변을 적어 주세요'});renderAll();touch();}
+  else if(t.hasAttribute('data-qaadd')){var qf=qaField(BLOCKS[b.type]);b.data.items.push({q:(qf.q||'질문')+'을 적어 주세요',a:(qf.a||'답변')+'을 적어 주세요'});renderAll();touch();}
 });
 
 /* ───────── 상단 ───────── */
